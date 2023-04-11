@@ -9,7 +9,7 @@ const productsInCart = async (req, res) => {
   
       // If the cart is empty, return an empty cart message
       if (cartItems.length === 0) {
-        return res.status(200).json({ message: 'Your cart is empty' });
+        return res.status(200).json({ message: 'Your cart is Empty' });
       }
   
       // Otherwise, return the cart items
