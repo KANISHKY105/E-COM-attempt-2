@@ -1,0 +1,19 @@
+const session = require("express-session"); // auth section
+const passport = require("passport");
+const passportLocalMongoose = require("passport-local-mongoose");
+
+module.exports.isAuth = (req, res, next) => {
+  if (req.isAuthenticated()) {
+    next();
+  } else {
+    res.status(401).json({ message: "Unauthorized" });
+  }
+};
+
+module.exports.isAdmin = (req, res, next) => {
+  if (req.isAuthenticated() && req.user.isAdmin) {
+    next();
+  } else {
+    res.status(401).json({ message: "Unauthorized: Admin access required" });
+  }
+};
